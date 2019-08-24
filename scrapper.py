@@ -8,6 +8,6 @@ page = requests.get(URL, headers=headers)
 
 soup = BeautifulSoup(page.content, 'html.parser')
 
-title = soup.find(id="productTitle")
+title = soup.find(id="productTitle").get_text()
 
-print(title)
+print(title.strip())
