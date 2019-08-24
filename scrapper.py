@@ -7,4 +7,7 @@ headers = {"User-Agents": 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (K
 page = requests.get(URL, headers=headers)
 
 soup = BeautifulSoup(page.content, 'html.parser')
-print(soup.prettify())
+
+title = soup.find(id="productTitle")
+
+print(title)
