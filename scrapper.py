@@ -1,5 +1,16 @@
 import requests
 from lxml import html
+import smtplib  
+
+def sendMail():
+	print("Function called")
+	s = smtplib.SMTP('smtp.gmail.com', 587) 
+	s.starttls() 
+	s.login("hack7jack@gmail.com", "downloadapp007") 
+	message = "Price Dropped Bro"
+	s.sendmail("hack7jack@gmail.com", "gupta7nitin@gmail.com", message) 
+	s.quit()
+
 
 def get_name_price(URL):
 	headers = {"User-Agents": 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36'}
@@ -22,7 +33,7 @@ def price_alert(url, dest_price):
 
 	price_val = float(price.replace(',',''))
 	if (price_val < dest_price):
-		print ("YAYY: price of " + str(name) + " is Rs " + price)
+		sendMail()
 	else:
 		print ("SHIT: price of " + str(name) + " is Rs " + price)
 
